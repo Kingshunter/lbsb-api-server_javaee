@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
+	default-lazy-init="true">
+
+	<!-- 自动扫描的包名 -->
+	<context:component-scan base-package="com.lbsb.core.action" />
+
+	<!-- 默认的注解映射的支持 -->
+	<mvc:annotation-driven />
+
+
+	<!-- <bean id="velocityConfigurer"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="/WEB-INF/templates/">
+		</property>
+		<property name="velocityProperties">
+			<props>
+				<prop key="input.encoding">UTF-8</prop>
+				<prop key="output.encoding">UTF-8</prop>
+			</props>
+		</property>
+	</bean> -->
+
+	<!-- <bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="cache" value="true" />
+		<property name="prefix" value="" />
+		<property name="suffix" value=".html" />
+		<property name="contentType">
+			<value>text/html;charset=UTF-8</value>
+		</property>
+		<property name="order">
+			<value>0</value>
+		</property>
+	</bean> -->
+
+</beans>  
