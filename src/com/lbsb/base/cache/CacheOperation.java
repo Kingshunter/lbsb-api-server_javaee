@@ -1,6 +1,9 @@
 package com.lbsb.base.cache;
 
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 /**
  * 
@@ -10,17 +13,17 @@ import java.util.List;
  */
 public interface CacheOperation {
 	
-	public boolean add(String key, Object value);
+	public boolean add(String key, Object value) throws InterruptedException, TimeoutException, ExecutionException;
 	
-	public boolean add(String key, Object value, int exp);
+	public boolean add(String key, int exp, Object value) throws InterruptedException, TimeoutException, ExecutionException;
 	
-	public boolean set(String key, Object value);
+	public boolean set(String key, Object value) throws InterruptedException, TimeoutException, ExecutionException;
 	
-	public boolean set(String key, Object value, int exp);
+	public boolean set(String key, int exp, Object value) throws InterruptedException, TimeoutException, ExecutionException;
 	
-	public <T> T get(String key);
+	public Object get(String key);
 	
-	public <T> List<T> getMuti(List<String> keyList);
+	public Map<String, Object> getMuti(List<String> keyList);
 	
 	public void delete(String key);
 	
@@ -48,5 +51,5 @@ public interface CacheOperation {
 	
 	public long decr(String key, long by, long def, int exp);
 	
-	public boolean replace(String key, Object value, int exp);
+	public boolean replace(String key, int exp, Object value) throws InterruptedException, ExecutionException, TimeoutException;
 }
