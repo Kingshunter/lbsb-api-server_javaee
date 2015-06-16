@@ -7,7 +7,7 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * 
- * @author KingsHunter
+ * @author Hunter
  * @createDate June 12th,2015
  *
  */

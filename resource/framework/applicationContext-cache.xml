@@ -7,7 +7,7 @@
 	http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
-		<property name="servers" value="${cache.host}" />
+		<property name="servers" value="10.13.132.88:11212" />
 		<property name="protocol" value="BINARY" />
 		<property name="transcoder">
 			<bean class="net.spy.memcached.transcoders.SerializingTranscoder">
@@ -24,7 +24,14 @@
 		<property name="useNagleAlgorithm" value="false" />
 	</bean>
 	
-	<bean id="remoteCache" class="">
-		
+	<bean id="serializingTranscoder" class="net.spy.memcached.transcoders.SerializingTranscoder" />
+	
+	<bean id="memcachedOperation" class="com.lbsb.base.cache.MemcachedOperation">
+		<property name="memcachedClient" ref="memcachedClient" />
+		<property name="serializingTranscoder" ref="serializingTranscoder" />
+	</bean>
+	
+	<bean id="cacheManager" class="com.lbsb.base.cache.CacheManager">
+		<property name="cacheOperation" ref="memcachedOperation" />
 	</bean>
 </beans>

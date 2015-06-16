@@ -12,8 +12,6 @@ import net.spy.memcached.MemcachedClient;
 import net.spy.memcached.internal.OperationFuture;
 import net.spy.memcached.transcoders.SerializingTranscoder;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 /**
  * 
  * @author Hunter
@@ -22,10 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MemcachedOperation implements CacheOperation {
 
-	@Autowired
 	private MemcachedClient memcachedClient;
 
-	@Autowired
 	private SerializingTranscoder serializingTranscoder;
 
 	private static final int singleTimeout = 1500;
@@ -183,5 +179,23 @@ public class MemcachedOperation implements CacheOperation {
 			throw e;
 		}
 	}
+
+	public MemcachedClient getMemcachedClient() {
+		return memcachedClient;
+	}
+
+	public void setMemcachedClient(MemcachedClient memcachedClient) {
+		this.memcachedClient = memcachedClient;
+	}
+
+	public SerializingTranscoder getSerializingTranscoder() {
+		return serializingTranscoder;
+	}
+
+	public void setSerializingTranscoder(SerializingTranscoder serializingTranscoder) {
+		this.serializingTranscoder = serializingTranscoder;
+	}
+	
+	
 
 }
