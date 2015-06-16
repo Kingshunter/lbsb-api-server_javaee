@@ -7,7 +7,7 @@
 	http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
-		<property name="servers" value="10.13.132.88:11212" />
+		<property name="servers" value="${cache.host}" />
 		<property name="protocol" value="BINARY" />
 		<property name="transcoder">
 			<bean class="net.spy.memcached.transcoders.SerializingTranscoder">
