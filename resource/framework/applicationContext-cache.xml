@@ -34,4 +34,6 @@
 	<bean id="cacheManager" class="com.lbsb.base.cache.CacheManager">
 		<property name="cacheOperation" ref="memcachedOperation" />
 	</bean>
+	
+	<bean id="ehcacheClient" class="com.lbsb.base.cache.EhCacheClient" init-method="init" />
 </beans>

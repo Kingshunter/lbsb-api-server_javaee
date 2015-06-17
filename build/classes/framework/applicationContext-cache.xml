@@ -24,7 +24,16 @@
 		<property name="useNagleAlgorithm" value="false" />
 	</bean>
 	
-	<bean id="remoteCache" class="">
-		
+	<bean id="serializingTranscoder" class="net.spy.memcached.transcoders.SerializingTranscoder" />
+	
+	<bean id="memcachedOperation" class="com.lbsb.base.cache.MemcachedOperation">
+		<property name="memcachedClient" ref="memcachedClient" />
+		<property name="serializingTranscoder" ref="serializingTranscoder" />
 	</bean>
+	
+	<bean id="cacheManager" class="com.lbsb.base.cache.CacheManager">
+		<property name="cacheOperation" ref="memcachedOperation" />
+	</bean>
+	
+	<bean id="ehcacheClient" class="com.lbsb.base.cache.EhCacheClient" init-method="init" />
 </beans>

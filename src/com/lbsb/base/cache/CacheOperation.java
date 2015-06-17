@@ -13,13 +13,13 @@ import java.util.concurrent.TimeoutException;
  */
 public interface CacheOperation {
 	
-	public boolean add(String key, Object value) throws InterruptedException, TimeoutException, ExecutionException;
+	public boolean add(String key, Object value) throws Exception;
 	
-	public boolean add(String key, int exp, Object value) throws InterruptedException, TimeoutException, ExecutionException;
+	public boolean add(String key, int exp, Object value) throws Exception;
 	
-	public boolean set(String key, Object value) throws InterruptedException, TimeoutException, ExecutionException;
+	public boolean set(String key, Object value) throws Exception;
 	
-	public boolean set(String key, int exp, Object value) throws InterruptedException, TimeoutException, ExecutionException;
+	public boolean set(String key, int exp, Object value) throws Exception;
 	
 	public Object get(String key);
 	
@@ -51,5 +51,5 @@ public interface CacheOperation {
 	
 	public long decr(String key, long by, long def, int exp);
 	
-	public boolean replace(String key, int exp, Object value) throws InterruptedException, ExecutionException, TimeoutException;
+	public boolean replace(String key, int exp, Object value) throws Exception;
 }

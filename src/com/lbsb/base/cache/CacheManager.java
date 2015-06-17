@@ -3,6 +3,12 @@ package com.lbsb.base.cache;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * ª∫¥Êπ‹¿Ì
+ * @author Hunter
+ * @createDate June 17th,2015
+ *
+ */
 public class CacheManager {
 	
 	private CacheOperation cacheOperation;

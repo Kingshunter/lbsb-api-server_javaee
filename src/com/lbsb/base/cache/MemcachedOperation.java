@@ -30,50 +30,54 @@ public class MemcachedOperation implements CacheOperation {
 
 	private static final int exp = 10;
 
-	public boolean add(String key, Object value) throws InterruptedException,
-			TimeoutException, ExecutionException {
+	public boolean add(String key, Object value) throws Exception {
 		return add(key, exp, value);
 	}
 
 	public boolean add(String key, int exp, Object value)
-			throws InterruptedException, TimeoutException, ExecutionException {
+			throws Exception {
 		OperationFuture<Boolean> future = memcachedClient.add(key, exp, value,
 				serializingTranscoder);
 		try {
 			return future.get(singleTimeout, TimeUnit.MILLISECONDS);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			throw e;
-		} catch (TimeoutException e) {
-			e.printStackTrace();
-			throw e;
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-			throw e;
+		} catch (Exception e) {
+			if (e instanceof InterruptedException) {
+				e.printStackTrace();
+				throw e;
+			} else if (e instanceof TimeoutException) {
+				e.printStackTrace();
+				throw e;
+			} else if (e instanceof ExecutionException) {
+				e.printStackTrace();
+				throw e;
+			}
+			throw new Exception("unknown exception");
 		}
 	}
 
-	public boolean set(String key, Object value) throws InterruptedException,
-			TimeoutException, ExecutionException {
+	public boolean set(String key, Object value) throws Exception {
 		return set(key, exp, value);
 	}
 
-	public boolean set(String key, int exp, Object value)
-			throws InterruptedException, TimeoutException, ExecutionException {
+	public boolean set(String key, int exp, Object value) throws Exception {
 		OperationFuture<Boolean> future = memcachedClient.set(key, exp, value,
 				serializingTranscoder);
 		try {
 			return future.get(singleTimeout, TimeUnit.MILLISECONDS);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			throw e;
-		} catch (TimeoutException e) {
-			e.printStackTrace();
-			throw e;
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-			throw e;
+		} catch (Exception e) {
+			if (e instanceof InterruptedException) {
+				e.printStackTrace();
+				throw e;
+			} else if (e instanceof TimeoutException) {
+				e.printStackTrace();
+				throw e;
+			} else if (e instanceof ExecutionException) {
+				e.printStackTrace();
+				throw e;
+			}
+			throw new Exception("unknown exception");
 		}
+		
 	}
 
 	public Object get(String key) {
@@ -164,19 +168,22 @@ public class MemcachedOperation implements CacheOperation {
 		return memcachedClient.decr(key, by, def, exp);
 	}
 
-	public boolean replace(String key, int exp, Object value) throws InterruptedException, ExecutionException, TimeoutException {
+	public boolean replace(String key, int exp, Object value) throws Exception {
 		Future<Boolean> future = memcachedClient.replace(key, exp, value, serializingTranscoder);
 		try {
 			return future.get(singleTimeout, TimeUnit.MILLISECONDS);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			throw e;
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-			throw e;
-		} catch (TimeoutException e) {
-			e.printStackTrace();
-			throw e;
+		} catch (Exception e) {
+			if (e instanceof InterruptedException) {
+				e.printStackTrace();
+				throw e;
+			} else if (e instanceof TimeoutException) {
+				e.printStackTrace();
+				throw e;
+			} else if (e instanceof ExecutionException) {
+				e.printStackTrace();
+				throw e;
+			}
+			throw new Exception("unknown exception");
 		}
 	}
 
