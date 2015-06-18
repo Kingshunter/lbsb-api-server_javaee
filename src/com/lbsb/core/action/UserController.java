@@ -8,7 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.lbsb.base.cache.CacheManager;
+import com.lbsb.base.cache.EhcacheOperation;
+import com.lbsb.base.cache.RemoteCacheManager;
 import com.lbsb.core.model.User;
 import com.lbsb.core.service.UserService;
 
@@ -20,7 +21,10 @@ public class UserController {
 	private UserService userService;
 	
 	@Autowired
-	private CacheManager mo;
+	private RemoteCacheManager mo;
+	
+	@Autowired
+	private EhcacheOperation c;
 	
 	
 	@RequestMapping(value="/user", method = RequestMethod.GET)
@@ -51,6 +55,11 @@ public class UserController {
 		System.out.println(value);
 		System.out.println(user1);
 		System.out.println(list);
+		
+		c.set("bbbaaaa", "ewqroipiropqr", "10s");
+		System.out.println(c.get("bbbaaaa"));
+		System.out.println(c.get("bbbaaaa"));
+		System.out.println(c.get("bbbaaaa"));
 	}
 	
 	

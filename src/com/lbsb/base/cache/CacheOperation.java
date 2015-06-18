@@ -2,8 +2,6 @@ package com.lbsb.base.cache;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
 /**
  * 
@@ -31,25 +29,11 @@ public interface CacheOperation {
 	
 	public long incr(String key, int by);
 	
-	public long incr(String key, int by, long def);
-	
-	public long incr(String key, int by, long def, int exp);
-	
 	public long incr(String key, long by);
-	
-	public long incr(String key, long by, long def);
-	
-	public long incr(String key, long by, long def, int exp);
 	
 	public long decr(String key, int by);
 	
-	public long decr(String key, int by, long def);
-	
-	public long decr(String key, int by, long def, int exp);
-	
-	public long decr(String key, long by, long def);
-	
-	public long decr(String key, long by, long def, int exp);
+	public long decr(String key, long by);
 	
 	public boolean replace(String key, int exp, Object value) throws Exception;
 }

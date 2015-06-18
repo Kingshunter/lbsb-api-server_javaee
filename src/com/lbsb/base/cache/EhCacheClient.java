@@ -9,9 +9,7 @@ import net.sf.ehcache.CacheManager;
  * @createDate June 17th,2015
  *
  */
-public class EhCacheClient {
-	
-	private static EhCacheClient ehCacheClient;
+public class EhcacheClient {
 	
 	private CacheManager cacheManager;
 
@@ -19,23 +17,10 @@ public class EhCacheClient {
     
     private static final String ehcacheName = "lbsb";
 	
-	private EhCacheClient() {
+	private EhcacheClient() {
 		cacheManager = CacheManager.create();
 		cacheManager.addCache(ehcacheName);
 		cache = cacheManager.getCache(ehcacheName);
 	}
-	
-	public static EhCacheClient getInstance() {
-		return ehCacheClient;
-	}
-	
-	public static void init() {
-		ehCacheClient = SingletonEhCacheClient.ehCacheClient;
-		
-	}
-	
-	private static class SingletonEhCacheClient {
-		private static final EhCacheClient ehCacheClient = new EhCacheClient();
-	}	
 	
 }

@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * »º´æ¹ÜÀí
+ * ç¼“å­˜ç®¡ç†
  * @author Hunter
  * @createDate June 17th,2015
  *
  */
-public class CacheManager {
+public class RemoteCacheManager {
 	
 	private CacheOperation cacheOperation;
 	
@@ -21,12 +21,12 @@ public class CacheManager {
 		this.cacheOperation = cacheOperation;
 	}
 
-	private CacheManager() {
+	private RemoteCacheManager() {
 		
 	}
 	
-	public static CacheManager getInstance() {
-		return SingletonCacheOperation.cacheManager;
+	public static RemoteCacheManager getInstance() {
+		return SingletonRemoteCacheManager.cacheManager;
 	}
 	
 	
@@ -85,7 +85,7 @@ public class CacheManager {
 		return cacheOperation.getMuti(keyList);
 	}
 	
-	private static class SingletonCacheOperation {
-		private static final CacheManager cacheManager = new CacheManager();
+	private static class SingletonRemoteCacheManager {
+		private static final RemoteCacheManager cacheManager = new RemoteCacheManager();
 	}
 }

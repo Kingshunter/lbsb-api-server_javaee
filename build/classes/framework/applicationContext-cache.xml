@@ -26,14 +26,20 @@
 	
 	<bean id="serializingTranscoder" class="net.spy.memcached.transcoders.SerializingTranscoder" />
 	
-	<bean id="memcachedOperation" class="com.lbsb.base.cache.MemcachedOperation">
+	<bean id="memcachedOperation" class="com.lbsb.base.cache.MemcachedOperationImpl">
 		<property name="memcachedClient" ref="memcachedClient" />
 		<property name="serializingTranscoder" ref="serializingTranscoder" />
 	</bean>
 	
-	<bean id="cacheManager" class="com.lbsb.base.cache.CacheManager">
+	<bean id="remoteCacheManager" class="com.lbsb.base.cache.RemoteCacheManager">
 		<property name="cacheOperation" ref="memcachedOperation" />
 	</bean>
 	
-	<bean id="ehcacheClient" class="com.lbsb.base.cache.EhCacheClient" init-method="init" />
+	<bean id="ehcacheClient" class="com.lbsb.base.cache.EhcacheClient" />
+	
+	<bean id="ehcacheOperation" class="com.lbsb.base.cache.EhcacheOperationImpl">
+		<property name="ehcacheClient" ref="ehcacheClient" />
+	</bean>
+	
+	
 </beans>
